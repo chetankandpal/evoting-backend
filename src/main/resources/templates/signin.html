@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <title>ElectionPortal</title>
+    <title>eVotingPortal</title>
 </head>
 <body>
  
@@ -12,37 +12,38 @@
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <form th:action="@{/login}" method="post">
                 <fieldset>
-                    <h1>Please Sign In</h1>
+                    <center><h1>eVoting Portal</h1></center>
+                    <center><h3>Please Sign In</h3></center>
 
-                    <div th:if="${param.error}">
+                    <center><div th:if="${param.error}">
                         <div class="alert alert-danger">
                             Invalid username and password.
                         </div>
-                    </div>
-                    <div th:if="${param.logout}">
+                    </div></center>
+                    <center><div th:if="${param.logout}">
                         <div class="alert alert-info">
                             You have been logged out.
                         </div>
-                    </div>
+                    </div></center>
                      
-                    <div class="form-group">
+                    <center><div class="form-group">
                         <input type="text" name="username" id="username" class=" input-lg"
                                placeholder="VoterId" required="true" autofocus="true"/>
-                    </div>
+                    </div></center>
                     
                     <br>
-                    <div class="form-group">
+                   <center><div class="form-group">
                         <input type="text" name="password" id="password" class="input-lg"
                                placeholder="email" required="true"/>
-                    </div>
+                    </div></center>
                     <br>
-                    <div class="row">
+                    <center><div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                         </div>
-                    </div>
+                    </div></center>
                 </fieldset>
             </form>
         </div>
