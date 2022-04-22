@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_DATABASE: 'electiondb'
+      MYSQL_USER: 'sarthak'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    restart: always
+    volumes:
+      - my-db:/usr/local/bin/mysql
+
+  backend:
+    image: sarthakdandriyal/evoting_backend
+    container_name: backend
+
+    ports:
+      - '8083:8083'
+
+    restart: always
+
+    depends_on:
+      - db
+
+  frontend:
+    image: sarthakdandriyal/evoting_frontend
+    container_name: frontend
+
+    ports:
+      - "3000:3000"
+
+    restart: always
+
+    depends_on:
+      - backend
+volumes:
+  my-db:

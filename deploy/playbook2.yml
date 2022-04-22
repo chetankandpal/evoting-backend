@@ -1,0 +1,16 @@
+---
+- name: Pull Docker Image
+  hosts: localhost
+  tasks:
+    - name: Pull mysql image
+      docker_image:
+        name: mysql:5.7
+        source: pull
+    - name: Pull backend image
+      docker_image:
+        name: sarthakdandriyal/evoting_backend
+        source: pull
+    - name: Pull frontend image
+      docker_image:
+        name: sarthakdandriyal/evoting_frontend
+        source: pull
