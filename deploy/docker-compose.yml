@@ -15,7 +15,7 @@ services:
 
 
   backend:
-    image: docker123chetan/evoting_backend:latest
+    image: docker123chetan/backendimage:latest
     container_name: backend
 
     ports:
