@@ -12,8 +12,7 @@ services:
     ports:
       - '3306:3306'
     restart: always
-    volumes:
-      - my-db:/usr/local/bin/mysql
+
 
   backend:
     image: docker123chetan/evoting_backend:latest
