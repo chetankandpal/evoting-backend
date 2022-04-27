@@ -37,5 +37,3 @@ services:
 
     depends_on:
       - backend
-volumes:
-  my-db:
