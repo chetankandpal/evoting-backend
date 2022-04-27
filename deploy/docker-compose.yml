@@ -2,11 +2,11 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql/mysql-server:latest
     container_name: db
     environment:
       MYSQL_DATABASE: 'electiondb'
-      MYSQL_USER: 'sarthak'
+      MYSQL_USER: 'ck'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
@@ -16,7 +16,7 @@ services:
       - my-db:/usr/local/bin/mysql
 
   backend:
-    image: sarthakdandriyal/evoting_backend
+    image: docker123chetan/evoting_backend:latest
     container_name: backend
 
     ports:
@@ -28,7 +28,7 @@ services:
       - db
 
   frontend:
-    image: sarthakdandriyal/evoting_frontend
+    image: docker123chetan/frontendimage:latest
     container_name: frontend
 
     ports:

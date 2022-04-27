@@ -16,7 +16,6 @@ public class ElectionController {
     @RequestMapping(method = RequestMethod.POST,value="/election")
     public void addElection(@RequestBody Election election){
         System.out.println("Ename "+election.getElectionname()+"STime"+election.getStime());
-
         electionService.addElection(election);
     }
 

@@ -1,5 +1,7 @@
 package io.application.voter;
 
+import io.application.electionadmin.Election;
+import io.application.electionadmin.ElectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,9 @@ public class VoterService implements UserDetailsService {
     private VoterRepository voterRepository;
     @Autowired
     public EmailService emailService;
+    @Autowired
+    public ElectionRepository eRepo;
+
     String remName;
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if(username.equals("ADMIN")){
@@ -60,8 +65,20 @@ public class VoterService implements UserDetailsService {
         voterRepository.findAll().forEach(voters::add);
         for(int i=0;i<voters.size();i++){
             Voter v=voters.get(i);
-            String Otp="Hello "+v.getName()+" you have been added as a voter.Please goto localhost:8083/user to vote";
+            String Otp="Hello "+v.getName()+" you have been added as a voter.Please go to http://localhost:8083/ to vote";
             emailService.sendOtpMessage(v.getEmail(), "Election Created", Otp);
+            System.out.println(v.getEmail());
+        }
+        return voters;
+    }
+
+    public List<Voter> notifyResult() throws MessagingException {
+        List<Voter> voters=new ArrayList<>();
+        voterRepository.findAll().forEach(voters::add);
+        for(int i=0;i<voters.size();i++){
+            Voter v=voters.get(i);
+            String Otp="Hello "+v.getName()+" the election result is out.Please go to http://localhost:8083/result to view";
+            emailService.sendOtpMessage(v.getEmail(), "Result out", Otp);
             System.out.println(v.getEmail());
         }
         return voters;

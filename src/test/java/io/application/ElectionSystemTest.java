@@ -28,10 +28,10 @@ public class ElectionSystemTest {
     public void testInsertVoter(){
         Voter v = new Voter("MT2021119","Sarthak Dandriyal","Dehradun","sarthakdandriyal3199@gmail.com","0","ROLE_USER");
         vRepo.save(v);
-        v = new Voter("1","Chetan Kandpal","Haldwani","chetankandpal94@gmail.com","0","ROLE_USER");
+        v = new Voter("MT2021035","Chetan Kandpal","Haldwani","chetankandpal94@gmail.com","0","ROLE_USER");
         vRepo.save(v);
         Assertions.assertNotNull(vRepo.findByVoterid("MT2021119"));
-        Assertions.assertNotNull(vRepo.findByVoterid("1"));
+        Assertions.assertNull(vRepo.findByVoterid("1"));
     }
     @Test
     public void getVoterName(){

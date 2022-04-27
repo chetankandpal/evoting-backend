@@ -34,15 +34,6 @@ public class HomeController {
     public String login() {
         return "signin";
     }
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin";
-    }
-    @GetMapping("/user")
-    public String user() {
-        return "user";
-    }
-  
   
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public @ResponseBody String logout(HttpServletRequest request, HttpServletResponse response){

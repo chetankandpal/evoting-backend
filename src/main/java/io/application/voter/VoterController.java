@@ -27,6 +27,10 @@ public class VoterController {
     public List<Voter> notifyCreation() throws MessagingException {
       return voterService.notifyCreate();
     }
+    @RequestMapping("/publishresult")
+    public List<Voter> notifyResult() throws MessagingException {
+        return voterService.notifyResult();
+    }
 
     @RequestMapping("/voted")
     public void voted(){
